@@ -92,3 +92,11 @@ python scripts/api.py
 
 ## References
 [Quickstart](https://rasa.com/docs/core/quickstart/)
+
+## Training for production
+
+python -m rasa_core.train -d bot/domain.yml -s bot/data/stories -o bot/models/dialogue --epochs 1200
+
+python -m rasa_nlu.train -c bot/nlu_config.yml --data bot/data/intents -o bot/models --fixed_model_name nlu --project tais --verbose
+
+python -m rasa_core.run -d bot/models/dialogue -u bot/models/tais/nlu
