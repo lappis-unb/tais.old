@@ -1,94 +1,94 @@
-# Simple rasa bot
+# Tais - Assistente Virtual da Cultura
 
-This is a simple console rasa bot configuration made using [RASA quickstart](https://rasa.com/docs/core/quickstart/).
-
-## Usage
-
-I create a docker to run the rasa comands, so is not necessary to use
-a virtualenv or install in your pc the rasa configurations, just follow
-this topic and you will have a docker runing to use rasa commands.
-
-* Initialize docker:
+## Ambiente RocketChat
 
 ```sh
-sudo docker-compose up
+sudo docker-compose up -d rocketchat
 ```
 
-when appears `Attaching to rasa_playground_rasa_1` means that the container is running.
-
-* Access the container:
+Entre no rocketchat com o login `admin` e senha `admin`. Execute os comandos
+a seguir para configurar e rodar a Taís
 
 ```sh
-sudo docker ps
+python3 scripts/bot_config.py
+sudo docker-compose up tais
 ```
 
-see the name of the container, probably `rasa_playground_rasa_1`
+Para que a assistente virtual inicie a conversa você deve criar um `trigger`.
+Para isso, entre no rocketchat como `admin`, e vá no painel do Livechat na
+seção de Triggers, clique em `New Trigger`. Preencha o Trigger da seguinte forma:
 
-Execute the running container
+```yaml
+Enabled: Yes
+Name: Start Talk
+Description: Start Talk
+Condition: Visitor page URL
+    Value: http://localhost:8000/
+Action: Send Message
+ Value: Impersonate next agent from queue
+ Value: Oi eu sou a Taís, assistente virtual do minc, e estou aqui para te ajudar a esclarecer dúvidas sobre a Lei Rouanet, posso também solucionar problemas de proposta e projeto
+```
+## Testes
+
+### Conversa no console
 
 ```sh
-sudo docker exec -it <container_name> bash
+sudo docker build -t tais -f docker/tais/Dockerfile .
+sudo docker run --rm --name tais -it -v $PWD/tais:/tais tais python train.py all 
 ```
 
-Now you can run RASA commands in the container, and use any editor because
-a volume is mapping the `bot/` directory to the container, and the changes
-are updated automatically.
+### Teste de confiabilidade de frases
 
-## RASA commands
-
-* Train a Dialogue Model:
-
-This will train the dialogue model and store it into models/dialogue
+```sh
+sudo docker run --rm --name tais -it -v $PWD/tais:/tais tais python confidence.py
+```
 
 ```sh
 python -m rasa_core.train -d domain.yml -s stories.md -o models/dialogue
 ```
 
-* Train with using nlu examples:
-
-```sh
-python -m rasa_nlu.train -c nlu_config.yml --data nlu.md -o models --fixed_model_name nlu --project current --verbose
-```
-
-* Directly sending in the intents in the domain:
-
-To try the bot in this mode is needed to call the intents directly, like: `/greet` or `/goodby`
-
-```sh
-python -m rasa_core.run -d models/dialogue
-```
-
-### Other ways to run
-
-* Runing the bot in console simply:
+### Treiando o bot
 
 ```sh
 python -m rasa_core.run -d models/dialogue -u models/current/nlu
 ```
 
-* Runing with API enabled and using log file:
+* Treinando `dialogue`:
+
+Isso rá treinar o modelo de diálogo e armazenar o resultado em `models/dialogue`
+
+```sh
+python -m rasa_core.train -d domain.yml -s stories.md -o models/dialogue
+```
+
+* Treinar utilizando os exemplos do `nlu`:
+
+```sh
+python -m rasa_nlu.train -c nlu_config.yml --data nlu.md -o models --fixed_model_name nlu --project current --verbose
+```
+
+* Mandando `intents` diretamente na `domani`:
+
+PAra testar o bot neste modo é necessário chamar as `intents` diretamente, como: `/greet` ou `goodbye`
+
+```sh
+python -m rasa_core.run -d models/dialogue
+```
+
+* Executando bot no console:
+
+```sh
+python -m rasa_core.run -d models/dialogue -u models/current/nlu
+```
+
+* Executando o bot com a `API` e arquivo de `log` habilitados:
 
 ```sh
 python -m rasa_core.run --enable_api -d models/dialogue/ -u models/current/nlu/ -o out.log
 ```
 
-### Using RASA API
-
-* Post a message to bot API:
-
-```sh
-curl -XPOST localhost:5005/conversations/default/respond -d '{"query":"Hello"}'
-```
-
-* Show track information about the bot execution like `confidence`, `timestamp` and `intent` data.
-```sh
-curl http://localhost:5005/conversations/default/tracker
-```
-### Script
+### Testando bot com script
 
 ```sh
 python scripts/api.py
 ```
-
-## References
-[Quickstart](https://rasa.com/docs/core/quickstart/)
