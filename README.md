@@ -33,7 +33,7 @@ Action: Send Message
 ### Conversa no console
 
 ```sh
-sudo docker build -t tais -f docker/tais/Dockerfile .
+sudo docker build -t tais -f Dockerfile .
 sudo docker run --rm --name tais -it -v $PWD/tais:/tais tais python train.py all 
 ```
 
