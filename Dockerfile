@@ -8,4 +8,4 @@ RUN pip install -r /tmp/requirements.txt
 
 WORKDIR bot/
 
-CMD sleep infinity
+CMD make

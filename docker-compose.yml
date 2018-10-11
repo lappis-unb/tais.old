@@ -1,7 +1,7 @@
 version: '2'
 
 services:
-  rasa:
+  tais:
     build: .
     volumes:
       - ./bot/:/bot/
