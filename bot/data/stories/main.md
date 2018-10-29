@@ -42,3 +42,27 @@
 ## fallback story
 * out_of_scope
   - utter_default
+
+## Generated Story 1699229751266386225
+* cumprimentar
+    - utter_cumprimentar
+* lei_rouanet_o_que_eh
+    - utter_menu
+* lei_rouanet_origem_do_dinheiro
+    - utter_lei_rouanet_origem_do_dinheiro
+    - utter_menu
+* captacao_quando_captar
+    - utter_captacao_quando_captar
+* captacao_como_captar
+    - utter_menu
+* processo
+    - utter_processo
+* processo_como_funciona
+    - utter_processo_como_funciona
+    - utter_processo
+* processo_definicao_etapas
+    - utter_processo_definicao_etapas
+    - utter_processo
+* despedir
+    - utter_despedir
+
