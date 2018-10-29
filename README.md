@@ -34,8 +34,7 @@ Action: Send Message
 
 ```sh
 sudo docker build -t tais -f Dockerfile .
-sudo docker run --rm --name tais -it -v $PWD/bot:/bot tais make train-nlu
-sudo docker run --rm --name tais -it -v $PWD/bot:/bot tais make interactive
+sudo docker run --rm --name tais -it -v $PWD:/bot tais make train-nlu && make interactive
 ```
 
 ### Teste de confiabilidade de frases
