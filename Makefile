@@ -23,7 +23,6 @@ install:
 interactive:
 	python -m rasa_core.train -d bot/domain.yml -s bot/data/stories -o models/dialogue --epochs 250 --online --nlu models/nlu/default/current/
 train-nlu:
-	rm -r models/ 
 	python -m rasa_nlu.train -c bot/nlu_config.yml --fixed_model_name current --data bot/data/intents/ -o models/nlu
 	
 train-core:
