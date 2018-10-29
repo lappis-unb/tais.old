@@ -9,6 +9,7 @@ intents:
 
   - definicao_tais
   - definicao_minc
+  - definicao_cnic
   - definicao_sefic
   - definicao_projeto
   - definicao_proposta
@@ -727,6 +728,12 @@ templates:
 
           monitoramento dos projetos submetidos.
 
+  utter_definicao_cnic:
+    - text: |
+          O Conselho Nacional de Incentivo à Cultura (CNIC) é responsável por 
+
+          selecionar e aprovar os projetos para captação.
+
   utter_definicao_sefic:
     - text: |
           A (Secretaria de Fomento e Incentivo à Cultura) planeja,
@@ -1236,6 +1243,7 @@ actions:
   - utter_definicao
   - utter_definicao_tais
   - utter_definicao_minc
+  - utter_definicao_cnic
   - utter_definicao_sefic
   - utter_definicao_projeto
   - utter_definicao_proposta

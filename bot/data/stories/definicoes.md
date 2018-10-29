@@ -3,12 +3,16 @@
     - utter_cumprimentar
     - utter_menu
 * definicao_proposta
+    - utter_definicao_proposta
     - utter_menu
 * definicao_projeto
     - utter_definicao_projeto
     - utter_definicao
-* definicao_minc{"orgao": "CNIC"}
+* definicao_minc
     - utter_definicao_minc
+    - utter_definicao
+* definicao_cnic
+    - utter_definicao_cnic
     - utter_definicao
 * lei_rouanet_o_que_eh
     - utter_lei_rouanet_o_que_eh
@@ -17,7 +21,12 @@
     - utter_definicao_salic
     - utter_definicao
 * definicao_tais
+    - utter_definicao_tais
+    - utter_definicao
 * definicao_proponente
     - utter_definicao_proponente
+    - utter_definicao
+* definicao_vinculada
+    - utter_definicao_vinculada
     - utter_definicao
 

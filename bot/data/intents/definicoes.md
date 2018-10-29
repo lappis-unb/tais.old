@@ -20,6 +20,12 @@
 - MinC é o ministério
 - o que a sigla Minc significa
 
+## intent:definicao_cnic
+- o que é CNIC
+- o que significa CNIC
+- quem é a CNIC
+- o que significa a sigla CNIC
+
 ## intent:definicao_sefic
 - o que é Sefic
 - o que significa Sefic
