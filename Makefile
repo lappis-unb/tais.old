@@ -21,11 +21,11 @@ install:
 	python -m spacy link --force en_core_web_md en
 
 interactive:
-	python -m rasa_core.train -d bot/domain.yml -s bot/data/stories -o bot/models/dialogue --epochs 250 --online --nlu bot/models/tais/nlu
-
+	python -m rasa_core.train -d bot/domain.yml -s bot/data/stories -o models/dialogue --epochs 250 --online --nlu models/nlu/default/current/
 train-nlu:
-	python -m rasa_nlu.train -c config.yml --fixed_model_name current --data nlu.md -o models/nlu
-
+	rm -r models/ 
+	python -m rasa_nlu.train -c bot/nlu_config.yml --fixed_model_name current --data bot/data/intents/ -o models/nlu
+	
 train-core:
 	python -m rasa_core.train -s stories.md -d domain.yml -o models/dialogue --epochs 250
 
