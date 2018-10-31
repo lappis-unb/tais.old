@@ -50,3 +50,103 @@
 * despedir
     - utter_despedir
 
+## StorySalic1
+* cumprimentar
+  - utter_cumprimentar
+  - utter_menu
+* salic
+  - utter_salic
+* salic_cadastro_usuario
+  - utter_salic_cadastro_usuario
+  - utter_salic
+* salic_cadastro_proponente
+  - utter_salic_cadastro_proponente
+  - utter_salic
+* despedir
+  - utter_despedir
+
+## StorySalic2
+* cumprimentar
+  - utter_cumprimentar
+  - utter_menu
+* salic
+    - utter_salic
+* salic_erros
+  - utter_salic_erros
+* salic_erros_salvamento_de_proposta
+  - utter_salic_erros_salvamento_de_proposta
+  - utter_salic_erros
+* despedir
+    - utter_despedir
+
+## StorySalic3
+* cumprimentar
+  - utter_cumprimentar
+  - utter_menu
+* salic
+  - utter_salic
+* salic_erros_planilha_desapareceu
+  - utter_salic_erros_planilha_desapareceu
+  - utter_salic_erros
+* salic_erros_vinculo_cpf_cnpj
+  - utter_salic_erros_vinculo_cpf_cnpj
+  - utter_salic_erros
+* salic_erros_achar_proposta
+  - utter_salic_erros_achar_proposta
+  - utter_salic_erros
+
+
+## StorySalic4
+* cumprimentar
+  - utter_cumprimentar
+  - utter_menu
+* salic
+  - utter_salic
+* definicao_salic
+  - utter_definicao_salic
+  - utter_salic
+* salic_preenchimento
+  - utter_salic_preenchimento
+
+## StorySalic5
+* cumprimentar
+  - utter_cumprimentar
+  - utter_menu
+* salic
+  - utter_salic
+* salic_preenchimento_campo_custo_auditoria
+  - utter_salic_preenchimento_campo_custo_auditoria
+  - utter_salic_preenchimento
+* salic_preenchimento_cadastro_rubrica_advogado_contador
+  - utter_salic_preenchimento_cadastro_rubrica_advogado_contador
+  - utter_salic_preenchimento
+
+## StorySalic6
+* cumprimentar
+  - utter_cumprimentar
+  - utter_menu
+* salic
+  - utter_salic
+* salic_preenchimento_valor_ingresso
+  - utter_salic_preenchimento_valor_ingresso
+  - utter_salic_preenchimento
+
+## StorySalic7
+* cumprimentar
+  - utter_cumprimentar
+  - utter_menu
+* salic
+  - utter_salic
+* salic_preenchimento_vinculo_cpf_proposta
+  - utter_salic_preenchimento_vinculo_cpf_proposta
+  - utter_salic_preenchimento
+* salic_preenchimento_cadastro_agencia_bancaria
+  - utter_salic_preenchimento_cadastro_agencia_bancaria
+  - utter_salic_preenchimento
+
+## StorySalic8
+* salic_recuperacao_de_senha
+  - utter_salic_recuperacao_de_senha
+  - utter_salic
+* despedir
+  - utter_despedir

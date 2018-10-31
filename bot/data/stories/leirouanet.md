@@ -22,3 +22,45 @@
 * despedir
     - utter_despedir
 
+## StoryRouanet2
+* cumprimentar
+  - utter_cumprimentar
+  - utter_menu
+* lei_rouanet
+  - utter_lei_rouanet
+* lei_rouanet_o_que_eh
+  - utter_lei_rouanet_o_que_eh
+  - utter_lei_rouanet
+
+## StoryRouanet3
+* cumprimentar
+  - utter_cumprimentar
+  - utter_menu
+* lei_rouanet
+  - utter_lei_rouanet
+* lei_rouanet_origem_do_dinheiro
+  - utter_lei_rouanet_origem_do_dinheiro
+  - utter_lei_rouanet
+* lei_rouanet_quem_pode_ser_proponente
+  - utter_lei_rouanet_quem_pode_incentivar
+  - utter_lei_rouanet
+* despedir
+  - utter_despedir
+
+## StoryRouanet4
+* cumprimentar
+  - utter_cumprimentar
+  - utter_menu
+* lei_rouanet_beneficios_incentivo_projetos_culturais
+  - utter_lei_rouanet_beneficios_incentivo_projetos_culturais
+  - utter_lei_rouanet
+* lei_rouanet_denuncia
+  - utter_lei_rouanet_denuncia
+  - utter_lei_rouanet
+
+## StoryRouanet5
+  * lei_rouanet_denuncia
+    - utter_lei_rouanet_denuncia
+    - utter_lei_rouanet
+  *  despedir
+    - utter_despedir
