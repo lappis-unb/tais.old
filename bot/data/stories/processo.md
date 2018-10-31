@@ -1,4 +1,4 @@
-## Processo_como_funciona
+## Processo 1
 * cumprimentar
       - utter_cumprimentar
       - utter_menu
@@ -7,11 +7,18 @@
 * processo_como_funciona
       - utter_processo_como_funciona
       - utter_processo
+
+## Processo 2
+* cumprimentar
+      - utter_cumprimentar
+      - utter_menu
+* processo
+      - utter_processo
 * processo_reativacao_de_proposta
       - utter_processo_reativacao_de_proposta
        - utter_processo
 
-## Processo_Reativa
+## Processo 3
 * cumprimentar
     - utter_cumprimentar
     - utter_menu
@@ -20,23 +27,37 @@
 * processo_reativacao_de_proposta
     - utter_processo_reativacao_de_proposta
     - utter_processo
+
+## Processo 4
+* cumprimentar
+    - utter_cumprimentar
+    - utter_menu
+* processo
+    - utter_processo
 * processo_como_funciona
     - utter_processo_como_funciona
-    -  utter_processo
+    - utter_processo
 
-## Processo_prazos
+## Processo 5
 * cumprimentar
-  - utter_cumprimentar
-  - utter_menu
+    - utter_cumprimentar
+    - utter_menu
 * processo
-  - utter_processo
+    - utter_processo
 * processo_prazo
-  - utter_processo_prazo
-* processo_prazo_envio_cnae
-  - utter_processo_prazo_envio_cnae
-  - utter_processo
+    - utter_processo_prazo
 
-## Processo_prazos2
+## Processo 6
+* cumprimentar
+    - utter_cumprimentar
+    - utter_menu
+* processo
+    - utter_processo
+* processo_prazo_envio_cnae
+    - utter_processo_prazo_envio_cnae
+    - utter_processo
+
+## Processo 7
   * cumprimentar
     - utter_cumprimentar
     - utter_menu
@@ -44,20 +65,16 @@
     - utter_processo
   * processo_prazo
     - utter_processo_prazo
+
+## Processo 8
+* cumprimentar
+      - utter_cumprimentar
+      - utter_menu
+* processo
+      - utter_processo
   * processo_prazo_desistir_recurso
     - utter_processo_prazo_desistir_recurso
     - utter_processo
-
-## Processo_situacao_A12
-  * cumprimentar
-      - utter_cumprimentar
-      - utter_menu
-  * processo
-      - utter_processo
-  * processo_situacao_processo{"situacao_processo": "A12"}
-      - utter_processo_situacao_processo_A12
-      - utter_processo
-
 
 ## Processo_situacao_A12
   * cumprimentar

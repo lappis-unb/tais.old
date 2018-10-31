@@ -7,6 +7,7 @@ intents:
   - captacao_quando_captar
   - captacao_como_captar
 
+  - definicao
   - definicao_tais
   - definicao_minc
   - definicao_cnic
