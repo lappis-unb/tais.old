@@ -1,19 +1,19 @@
 ## Processo_como_funciona
-   * cumprimentar
-        - utter_cumprimentar
-        - utter_menu
-    * processo
-        - utter_processo
-    * processo_como_funciona
-        - utter_processo_como_funciona
-        - utter_processo
-    * processo_reativacao_de_proposta
-        - utter_processo_reativacao_de_proposta
-         - utter_processo
+* cumprimentar
+      - utter_cumprimentar
+      - utter_menu
+* processo
+      - utter_processo
+* processo_como_funciona
+      - utter_processo_como_funciona
+      - utter_processo
+* processo_reativacao_de_proposta
+      - utter_processo_reativacao_de_proposta
+       - utter_processo
 
 ## Processo_Reativa
 * cumprimentar
-    -   utter_cumprimentar
+    - utter_cumprimentar
     - utter_menu
 * processo
     - utter_processo

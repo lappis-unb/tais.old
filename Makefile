@@ -21,15 +21,16 @@ install:
 	python -m spacy link --force en_core_web_md en
 
 interactive:
-	python -m rasa_core.train -d bot/domain.yml -s bot/data/stories -o models/dialogue --epochs 250 --online --nlu models/nlu/default/current/
+	python -m rasa_core.train -d bot/domain.yml -s bot/data/stories -o bot/models/dialogue --epochs 30 --online --nlu bot/models/nlu/default/current/
+
 train-nlu:
-	python -m rasa_nlu.train -c bot/nlu_config.yml --fixed_model_name current --data bot/data/intents/ -o models/nlu
+	python -m rasa_nlu.train -c bot/nlu_config.yml --fixed_model_name current --data bot/data/intents/ -o bot/models/dialogue
 	
 train-core:
-	python -m rasa_core.train -s stories.md -d domain.yml -o models/dialogue --epochs 250
+	python -m rasa_core.train -s bot/data/stories -d bot/domain.yml -o bot/models/dialogue --epochs 30 --augmentation 50 --history 2 --nlu_threshold 0.75 --core_threshold 0.8 --fallback_action_name 'utter_default'
 
 cmdline:
-	python -m rasa_core.run -d models/dialogue -u models/nlu/default/current --debug
+	python -m rasa_core.run -d bot/models/dialogue -u bot/models/nlu/default/current --debug 
 
 visualize:
-	python -m rasa_core.visualize -s data/stories.md -d domain.yml -o story_graph.png
+	python -m rasa_core.visualize -s bot/data/stories -d bot/domain.yml -o story_graph.png

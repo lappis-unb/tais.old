@@ -39,11 +39,6 @@
   - utter_salic_cadastro_usuario
   - utter_menu
 
-## fallback story
-* out_of_scope
-  - utter_default
-  - utter_menu
-
 ## Despedir Story
 * despedir
     - utter_despedir
