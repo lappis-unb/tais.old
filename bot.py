@@ -11,6 +11,7 @@ import os
 from rasa_core import utils
 from rasa_core.agent import Agent
 from rasa_core.policies.fallback import FallbackPolicy
+from bot.actions.fallback import CustomFallbackPolicy
 from rasa_core.policies.keras_policy import KerasPolicy
 from rasa_core.policies.memoization import MemoizationPolicy
 from rasa_core.featurizers import MaxHistoryTrackerFeaturizer, BinarySingleStateFeaturizer
@@ -29,7 +30,7 @@ def train_core(domain_file="bot/domain.yml",
                                 BinarySingleStateFeaturizer(),
                                 max_history=3)),
                         MemoizationPolicy(max_history=3),
-                        FallbackPolicy(
+                        CustomFallbackPolicy(
                             fallback_action_name="utter_default",
                             nlu_threshold=0.60,
                             core_threshold=0.60)]
@@ -77,4 +78,4 @@ if __name__ == '__main__':
     if task == "train-nlu":
         train_nlu()
     elif task == "train-core":
-        train_dialogue()
+        train_core()
