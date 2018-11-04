@@ -3,6 +3,11 @@
 - o que você sabe conceituar
 - quais definições você conhece
 - definicoes
+- definições
+- qual é a definição
+- sobre definições
+- sobre definição
+- o que significa
 
 ## intent:definicao_tais
 - o que é Tais
@@ -13,6 +18,8 @@
 - qual significado de Tais
 - por que seu nome é Tais
 - qual é seu nome
+- definição de Tais
+- defina tais
 
 ## intent:definicao_minc
 - o que é Minc
