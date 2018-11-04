@@ -17,7 +17,13 @@ from rasa_core.policies.memoization import MemoizationPolicy
 from rasa_core.featurizers import MaxHistoryTrackerFeaturizer, BinarySingleStateFeaturizer
 
 logger = logging.getLogger(__name__)
-TRAINING_EPOCHS = int(os.getenv('TRAINING_EPOCHS', 150))
+EPOCHS = int(os.getenv('EPOCHS', 30))
+BATCH_SIZE = int(os.getenv('BATCH_SIZE', 30))
+VALIDATION_SPLIT = int(os.getenv('VALIDATION_SPLIT', 30))
+NLU_THRESHOLD = float(os.getenv('NLU_THRESHOLD', 0.6))
+CORE_THRESHOLD = float(os.getenv('CORE_THRESHOLD', 0.6))
+MAX_HISTORY = int(os.getenv('MAX_HISTORY', 3))
+FALLBACK_ACTION_NAME = str(os.getenv('FALLBACK_ACTION_NAME', 'utter_default'))
 
 def train_core(domain_file="bot/domain.yml",
                    model_path="bot/models/dialogue",
@@ -28,25 +34,24 @@ def train_core(domain_file="bot/domain.yml",
                         KerasPolicy(
                             MaxHistoryTrackerFeaturizer(
                                 BinarySingleStateFeaturizer(),
-                                max_history=3)),
-                        MemoizationPolicy(max_history=3),
+                                max_history=MAX_HISTORY)),
+                        MemoizationPolicy(max_history=MAX_HISTORY),
                         CustomFallbackPolicy(
-                            fallback_action_name="utter_default",
-                            nlu_threshold=0.60,
-                            core_threshold=0.60)]
+                            fallback_action_name=FALLBACK_ACTION_NAME,
+                            nlu_threshold=NLU_THRESHOLD,
+                            core_threshold=CORE_THRESHOLD)]
     )
 
     training_data = agent.load_data(training_data_file)
     agent.train(
         training_data,
-        epochs=TRAINING_EPOCHS,
-        batch_size=10,
-        validation_split=0.20
+        epochs=EPOCHS,
+        batch_size=BATCH_SIZE,
+        validation_split=VALIDATION_SPLIT
     )
 
     agent.persist(model_path)
     return agent
-
 
 def train_nlu():
     from rasa_nlu.training_data import load_data
@@ -56,8 +61,7 @@ def train_nlu():
     training_data = load_data('bot/data/intents')
     trainer = Trainer(config.load("bot/nlu_config.yml"))
     trainer.train(training_data)
-    model_directory = trainer.persist('bot/models/nlu/',
-                                      fixed_model_name="current")
+    model_directory = trainer.persist('bot/models/nlu/', fixed_model_name="current")
 
     return model_directory
 
@@ -65,12 +69,11 @@ def train_nlu():
 if __name__ == '__main__':
     utils.configure_colored_logging(loglevel="INFO")
 
-    parser = argparse.ArgumentParser(
-            description='starts the bot')
+    parser = argparse.ArgumentParser(description='starts the bot')
 
     parser.add_argument(
             'task',
-            choices=["train-nlu", "train-core", "run"],
+            choices=["train-nlu", "train-core", "train"],
             help="what the bot should do - e.g. run or train?")
     task = parser.parse_args().task
 
@@ -78,4 +81,7 @@ if __name__ == '__main__':
     if task == "train-nlu":
         train_nlu()
     elif task == "train-core":
+        train_core()
+    elif task == "train":
+        train_nlu()
         train_core()
