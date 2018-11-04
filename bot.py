@@ -18,20 +18,21 @@ from rasa_core.featurizers import MaxHistoryTrackerFeaturizer, BinarySingleState
 logger = logging.getLogger(__name__)
 TRAINING_EPOCHS = int(os.getenv('TRAINING_EPOCHS', 150))
 
-def train_dialogue(domain_file="bot/domain.yml",
+def train_core(domain_file="bot/domain.yml",
                    model_path="bot/models/dialogue",
                    training_data_file="bot/data/stories"):
 
     agent = Agent(domain_file,
                 policies=[
-                    KerasPolicy(
-                        MaxHistoryTrackerFeaturizer(
-                            BinarySingleStateFeaturizer(),
-                        max_history=3)),
-                MemoizationPolicy(max_history=3),
-                FallbackPolicy(fallback_action_name="utter_default",
-                              nlu_threshold=0.60,
-                              core_threshold=0.60)]
+                        KerasPolicy(
+                            MaxHistoryTrackerFeaturizer(
+                                BinarySingleStateFeaturizer(),
+                                max_history=3)),
+                        MemoizationPolicy(max_history=3),
+                        FallbackPolicy(
+                            fallback_action_name="utter_default",
+                            nlu_threshold=0.60,
+                            core_threshold=0.60)]
     )
 
     training_data = agent.load_data(training_data_file)
@@ -68,12 +69,12 @@ if __name__ == '__main__':
 
     parser.add_argument(
             'task',
-            choices=["train-nlu", "train-dialogue", "run"],
+            choices=["train-nlu", "train-core", "run"],
             help="what the bot should do - e.g. run or train?")
     task = parser.parse_args().task
 
     # decide what to do based on first parameter of the script
     if task == "train-nlu":
         train_nlu()
-    elif task == "train-dialogue":
+    elif task == "train-core":
         train_dialogue()
