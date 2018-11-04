@@ -1,0 +1,9 @@
+policies:
+  - name: "MemoizationPolicy"
+    max_history: 3
+  - name: "KerasPolicy"
+    max_history: 3
+  - name: "FallbackPolicy"
+    nlu_threshold: 0.6
+    core_threshold: 0.6
+    fallback_action_name: "utter_default"

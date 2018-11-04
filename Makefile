@@ -27,7 +27,7 @@ train-nlu:
 	python -m rasa_nlu.train -c bot/nlu_config.yml --fixed_model_name current --data bot/data/intents/ -o bot/models/dialogue
 	
 train-core:
-	python -m rasa_core.train -s bot/data/stories -d bot/domain.yml -o bot/models/dialogue --epochs 30 --augmentation 50 --history 3 --nlu_threshold 0.6 --core_threshold 0.6 --fallback_action_name 'utter_default'
+	python -m rasa_core.train -s bot/data/stories -d bot/domain.yml -o bot/models/dialogue --epochs 30 --augmentation 50 --history 3 -c bot/policies.yml
 
 cmdline:
 	python -m rasa_core.run -d bot/models/dialogue -u bot/models/nlu/default/current --debug 
