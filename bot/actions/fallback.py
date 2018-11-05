@@ -131,8 +131,11 @@ class CustomFallbackPolicy(Policy):
             # if this is the highest confidence in the ensemble,
             # the fallback action will be executed.
             result = self.fallback_scores(domain, self.core_threshold)
-            idx = domain.index_for_action("utter_{}".format(nlu_data["intent"].get('name')))
-            result[idx] = nlu_data["intent"].get('confidence',self.nlu_threshold)
+            try:
+                idx = domain.index_for_action("utter_{}".format(nlu_data["intent"].get('name')))
+                result[idx] = nlu_data["intent"].get('confidence',self.nlu_threshold)
+            except Exception as e:
+                pass
             # logger.debug("else result= {}".format(result))
             # result = [0.0] * domain.num_actions
             # result[idx] = FALLBACK_SCORE
