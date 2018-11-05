@@ -46,8 +46,8 @@ class CustomFallbackPolicy(Policy):
         return None
 
     def __init__(self,
-                 nlu_threshold=0.3,  # type: float
-                 core_threshold=0.3,  # type: float
+                 nlu_threshold=0.6,  # type: float
+                 core_threshold=0.6,  # type: float
                  fallback_action_name="action_default_fallback"  # type: Text
                  ):
         # type: (...) -> None
@@ -80,14 +80,11 @@ class CustomFallbackPolicy(Policy):
         trigger = False
         if nlu_confidence < self.nlu_threshold:
             trigger = True
-        #if core_confidence < self.core_threshold:
-        #    trigger = True
-        #if nlu_confidence < self.nlu_threshold and core_confidence >= self.core_threshold:
-        #    trigger = False
         if last_action_name == self.fallback_action_name:
             trigger = False
         if last_action_name is None:
             trigger = False
+            logger.debug("Last action_name is None")
 
         return trigger
 
@@ -108,7 +105,8 @@ class CustomFallbackPolicy(Policy):
         # if NLU interpreter does not provide confidence score,
         # it is set to 1.0 here in order
         # to not override standard behaviour
-        nlu_confidence = nlu_data["intent"].get("confidence", 0.0)
+        nlu_confidence = nlu_data["intent"].get("confidence", 1.0)
+        # logger.debug("NLU_DATA [intent] = {}".format(nlu_data["intent"]))
         #core_confidence = tracker.current_state()
         #logger.debug("This should be core_confidence {}".format(core_confidence))
 
@@ -132,13 +130,14 @@ class CustomFallbackPolicy(Policy):
             # predict fallback action with confidence `core_threshold`
             # if this is the highest confidence in the ensemble,
             # the fallback action will be executed.
-            result = [0.0] * domain.num_actions
-            # idx = domain.index_for_action('action_listen')
+            result = self.fallback_scores(domain, self.core_threshold)
+            idx = domain.index_for_action("utter_{}".format(nlu_data["intent"].get('name')))
+            result[idx] = nlu_data["intent"].get('confidence',self.nlu_threshold)
+            # logger.debug("else result= {}".format(result))
+            # result = [0.0] * domain.num_actions
             # result[idx] = FALLBACK_SCORE
             # logger.debug("FALLBACK_SCORE = {}".format(FALLBACK_SCORE))
 
-            # result = self.fallback_scores(domain, self.core_threshold)
-            # logger.debug("else result= {}".format(result))
 
         return result
 
