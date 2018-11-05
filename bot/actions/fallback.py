@@ -132,8 +132,10 @@ class CustomFallbackPolicy(Policy):
             # the fallback action will be executed.
             result = self.fallback_scores(domain, self.core_threshold)
             try:
-                idx = domain.index_for_action("utter_{}".format(nlu_data["intent"].get('name')))
-                result[idx] = nlu_data["intent"].get('confidence',self.nlu_threshold)
+                if tracker.latest_action_name != nlu_data["intent"].get('name'):
+                    if nlu_data["intent"].get('confidence') > self.core_threshold:
+                        idx = domain.index_for_action("utter_{}".format(nlu_data["intent"].get('name')))
+                        result[idx] = nlu_data["intent"].get('confidence',self.nlu_threshold)
             except Exception as e:
                 pass
             # logger.debug("else result= {}".format(result))

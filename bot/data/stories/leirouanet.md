@@ -22,7 +22,7 @@
 * lei_rouanet
     - utter_lei_rouanet
 * lei_rouanet_quem_pode_ser_proponente
-    - utter_lei_rouanet_quem_pode_incentivar
+    - utter_lei_rouanet_quem_pode_ser_proponente
     - utter_lei_rouanet
 
 ## LeiRouanet 4

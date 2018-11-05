@@ -13,7 +13,7 @@ from rasa_core.agent import Agent
 from rasa_core.policies.fallback import FallbackPolicy
 from bot.actions.fallback import CustomFallbackPolicy
 from rasa_core.policies.keras_policy import KerasPolicy
-from rasa_core.policies.memoization import MemoizationPolicy
+from rasa_core.policies.memoization import MemoizationPolicy, AugmentedMemoizationPolicy
 from rasa_core.featurizers import MaxHistoryTrackerFeaturizer, BinarySingleStateFeaturizer
 
 logger = logging.getLogger(__name__)
@@ -22,14 +22,15 @@ BATCH_SIZE = int(os.getenv('BATCH_SIZE', 30))
 VALIDATION_SPLIT = int(os.getenv('VALIDATION_SPLIT', 30))
 NLU_THRESHOLD = float(os.getenv('NLU_THRESHOLD', 0.6))
 CORE_THRESHOLD = float(os.getenv('CORE_THRESHOLD', 0.6))
-MAX_HISTORY = int(os.getenv('MAX_HISTORY', 3))
+MAX_HISTORY = int(os.getenv('MAX_HISTORY', 2))
 FALLBACK_ACTION_NAME = str(os.getenv('FALLBACK_ACTION_NAME', 'utter_default'))
 AUGMENTATION = int(os.getenv('AUGMENTATION', 50))
 
 def train_core(domain_file="bot/domain.yml",
                    model_path="bot/models/dialogue",
                    training_data_file="bot/data/stories"):
-
+    
+    MemoizationPolicy.USE_NLU_CONFIDENCE_AS_SCORE = True
     agent = Agent(domain_file,
                 policies=[
                         KerasPolicy(
