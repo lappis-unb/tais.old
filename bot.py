@@ -24,6 +24,7 @@ NLU_THRESHOLD = float(os.getenv('NLU_THRESHOLD', 0.6))
 CORE_THRESHOLD = float(os.getenv('CORE_THRESHOLD', 0.6))
 MAX_HISTORY = int(os.getenv('MAX_HISTORY', 3))
 FALLBACK_ACTION_NAME = str(os.getenv('FALLBACK_ACTION_NAME', 'utter_default'))
+AUGMENTATION = int(os.getenv('AUGMENTATION', 50))
 
 def train_core(domain_file="bot/domain.yml",
                    model_path="bot/models/dialogue",
@@ -42,7 +43,7 @@ def train_core(domain_file="bot/domain.yml",
                             core_threshold=CORE_THRESHOLD)]
     )
 
-    training_data = agent.load_data(training_data_file)
+    training_data = agent.load_data(training_data_file,augmentation_factor=AUGMENTATION)
     agent.train(
         training_data,
         epochs=EPOCHS,
