@@ -23,18 +23,19 @@ interactive:
 	python -m rasa_core.train -d bot/domain.yml -s bot/data/stories -o bot/models/dialogue --epochs 30 --online --nlu bot/models/nlu/default/current/
 
 train-nlu:
-	#python -m rasa_nlu.train -c bot/nlu_config.yml --fixed_model_name current --data bot/data/intents/ -o bot/models/dialogue
 	python bot.py train-nlu
 	
 train-core:
-	#python -m rasa_core.train -s bot/data/stories -d bot/domain.yml -o bot/models/dialogue --epochs 30 --augmentation 50 --history 3 -c bot/policies.yml
 	python bot.py train-core
 
 train:
 	python bot.py train
 
-cmdline:
+run-debug:
 	python -m rasa_core.run -d bot/models/dialogue -u bot/models/nlu/default/current --debug 
+
+run:
+	python -m rasa_core.run -d bot/models/dialogue -u bot/models/nlu/default/current -vv
 
 visualize:
 	python -m rasa_core.visualize -s bot/data/stories -d bot/domain.yml -o story_graph.png
