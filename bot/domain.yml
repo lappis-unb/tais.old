@@ -2,6 +2,7 @@ intents:
   - cumprimentar
   - despedir
   - out_of_scope
+  - verdades
 
   - captacao
   - captacao_quando_captar
@@ -1230,6 +1231,51 @@ templates:
         Orçamento do projeto > Custos por produto > Clicar no produto desejado
         Clicar no Local de realização > por último na aba Assessoria contábil e jurídica.
 
+utter_verdades_1:
+  - text: |
+        Você sabia que é MITO que o MinC dá dinheiro de incentivo fiscal para artistas?
+
+        Ele aprova projetos culturais propostos pela sociedade, com base na lei?
+
+         A decisão sobre os projetos que serão financiados é dos detentores de renúncia fiscal,
+
+        tanto pessoa jurídica como pessoa física.
+
+utter_verdades_2:
+  - text: |
+        Você sabia que é MITOS que o MinC favorece os grandes produtores culturais e artistas famosos?
+
+        Os projetos são propostos pela sociedade e a decisão sobre o financiamento é de pessoas jurídicas e físicas.
+
+
+utter_verdades_3:
+    - text: |
+          Você sabia que é MITO que os recursos da renúncia fiscal do IR para a cultura prejudicam diretamente
+
+           as verbas destinadas para outras atividades finalísticas do Governo, como recursos da saúde e educação.
+
+utter_verdades_4:
+    - text: |
+          Você sabia que é MITO que o MinC decide sobre a origem da renúncia fiscal.
+
+          A concentração na região sudeste decorre da relação direta do instrumento
+
+          com o ambiente socioeconômico do país, inclusive no que se refere ao recolhimento do IRPJ – lucro real por região.
+
+utter_verdades_5:
+    - text: |
+          Você sabia que é MITO que as empresas que usam o incentivo fiscal deixam de pagar imposto.
+
+          As empresas optam entre pagar o imposto ou apoiar a cultura ou outras áreas.
+
+utter_verdades_6:
+    - text: |
+          Você sabia que é MITO que as empresas que usam o incentivo fiscal são fiscalizadas pela Receita Federal
+
+          ou malha fina.
+
+          Tende a zero o número de empresas e pessoas físicas que malham por utilização da renúncia.
+
 actions:
   - utter_default
   - utter_restart
@@ -1356,3 +1402,10 @@ actions:
   - utter_salic_erros_achar_proposta
   - utter_salic_cadastro_proponente
   - utter_salic_cadastro_usuario
+
+  - utter_verdades_1
+  - utter_verdades_2
+  - utter_verdades_3
+  - utter_verdades_4
+  - utter_verdades_5
+  - utter_verdades_6

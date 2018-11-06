@@ -16,6 +16,7 @@
 - olá
 - oi Taís
 - olá Taís
+- ola
 - olá como vai?
 - como vai?
 - bom dia
@@ -42,3 +43,8 @@
 - até breve
 - falou, valeu
 - flw vlw
+
+##intent:mito
+- #VERDADES
+- #verdades
+- #verdade
