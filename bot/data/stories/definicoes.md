@@ -108,3 +108,60 @@
   - utter_definicao
 * despedir
   - utter_despedir  
+
+
+## Definicao 12
+* cumprimentar
+    - utter_cumprimentar
+    - utter_menu
+* verdades
+    - utter_verdades_1
+* verdades
+   - utter_verdades_2
+* verdades
+    - utter_verdades_3
+* verdades
+   - utter_verdades_4
+* verdades
+    - utter_verdades_5
+* verdades
+   - utter_verdades_6
+* despedir
+  - utter_despedir  
+
+## Definicao 13
+* verdades
+   - utter_verdades_2
+* verdades
+    - utter_verdades_5
+* verdades
+   - utter_verdades_6
+* despedir
+  - utter_despedir 
+
+## Definicao 14
+* verdades
+   - utter_verdades_6
+* verdades
+   - utter_verdades_4
+
+## Definicao 15
+* verdades
+    - utter_verdades_1
+
+## Definicao 16
+* verdades
+    - utter_verdades_2
+
+## Definicao 17
+* verdades
+    - utter_verdades_3
+
+
+## Definicao 18
+* verdades
+    - utter_verdades_4
+
+## Definicao 19
+* verdades
+    - utter_verdades_5

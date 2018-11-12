@@ -26,7 +26,7 @@ train-nlu:
 	python bot.py train-nlu
 	
 train-core:
-	python bot.py train-core
+	python -m rasa_core.train -d bot/domain.yml -s bot/data/stories -o bot/models/dialogue
 
 train:
 	python bot.py train
